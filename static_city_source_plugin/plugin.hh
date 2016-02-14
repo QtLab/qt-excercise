@@ -4,7 +4,7 @@
 
 namespace Weather { namespace StaticCityProvider {
 
-class Plugin : public IPlugin
+class Plugin : public  IPlugin
 {
 	Q_OBJECT
 	Q_INTERFACES(Weather::IPlugin)
@@ -15,6 +15,8 @@ public:
 	QString getName() const override { return "Static City Provider"; }
 	QString getCategory() const override { return "City Provider"; }
 	QString getDescription() const override { return "City source based on a static file"; }
+
+	QList<QObject*> getExtensions() override;
 
 private:
 };

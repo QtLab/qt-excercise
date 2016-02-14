@@ -16,6 +16,8 @@ public:
 	virtual QString getCategory() const = 0;
 	virtual QString getDescription() const = 0;
 
+	virtual QList<QObject*> getExtensions() { return {}; }
+
 private:
 };
 

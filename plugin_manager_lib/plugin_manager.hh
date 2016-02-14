@@ -18,6 +18,7 @@ public:
 
 	const QList<IPlugin*> getPlugins() const { return mPlugins; }
 
+
 private:
 
 	QList<IPlugin*> mPlugins;
