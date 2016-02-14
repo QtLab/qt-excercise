@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 
 	QApplication app(argc, argv);
 
-	Weather::PluginManager manager(app.applicationFilePath());
+	Weather::PluginManager manager(app.applicationDirPath());
 
 	return app.exec();
 }

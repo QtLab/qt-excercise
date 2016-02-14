@@ -13,7 +13,7 @@ class DummyPlugin : public IPlugin
 public:
 
 	QString getName() const override { return "Dummy"; }
-	QString getCategory() const override { "Dummy"; }
+	QString getCategory() const override { return "Dummy"; }
 
 private:
 };

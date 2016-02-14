@@ -18,7 +18,6 @@ public:
 
 private:
 
-	QList<IPlugin*> mPlugins;
 };
 
 }
