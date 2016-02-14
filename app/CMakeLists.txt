@@ -3,6 +3,7 @@ add_executable(app
 	pluginwindow.cc pluginwindow.hh pluginwindow.ui
 	mainwindow.cc mainwindow.hh mainwindow.ui
 	applicationtools.hh applicationtools.cc
+	citieswindow.cc citieswindow.hh citieswindow.ui
 )
 
 target_link_libraries(app

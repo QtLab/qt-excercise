@@ -25,17 +25,27 @@ void MainWindow::on_actionE_xit_triggered()
 
 } // namespace Weather
 
-
-void Weather::MainWindow::on_actionPlugin_list_triggered()
+template<typename DialogType, typename ... Args>
+void showOrCreateDialog(QPointer<DialogType>& pointer, Args&& ... args)
 {
-	if (!mPluginWindow)
+	if (!pointer)
 	{
-		mPluginWindow = new PluginWindow(mAppTools.getPluginManager());
-		mPluginWindow->setAttribute(Qt::WA_DeleteOnClose, true);
-		mPluginWindow->show();
+		pointer = new DialogType(std::forward<Args>(args)...);
+		pointer->setAttribute(Qt::WA_DeleteOnClose, true);
+		pointer->show();
 	}
 	else
 	{
-		mPluginWindow->raise();
+		pointer->raise();
 	}
+}
+
+void Weather::MainWindow::on_actionPlugin_list_triggered()
+{
+	showOrCreateDialog(mPluginWindow, mAppTools.getPluginManager());
+}
+
+void Weather::MainWindow::on_actionSearch_cities_triggered()
+{
+	showOrCreateDialog(mCitiesWindow, mAppTools);
 }

@@ -34,6 +34,7 @@
      <string>&amp;Tools</string>
     </property>
     <addaction name="actionPlugin_list"/>
+    <addaction name="actionSearch_cities"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
@@ -50,6 +51,11 @@
   <action name="actionPlugin_list">
    <property name="text">
     <string>Plugin list</string>
+   </property>
+  </action>
+  <action name="actionSearch_cities">
+   <property name="text">
+    <string>Search cities</string>
    </property>
   </action>
  </widget>
