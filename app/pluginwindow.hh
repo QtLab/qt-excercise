@@ -4,13 +4,13 @@
 
 #include <memory>
 
-namespace Ui {
-class PluginWindow;
-}
-
 class QTreeWidget;
 
 namespace Weather {
+
+namespace Ui {
+class PluginWindow;
+}
 
 class PluginManager;
 

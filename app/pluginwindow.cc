@@ -48,6 +48,7 @@ void PluginWindow::populate(QTreeWidget& widget, const PluginManager& pluginMana
 		}
 		new QTreeWidgetItem(categoryItem, QStringList{plugin->getName(), plugin->getDescription()});
 	}
+	widget.resizeColumnToContents(0);
 }
 
 }

@@ -1,7 +1,8 @@
 add_executable(app
 	main.cc
-
 	pluginwindow.cc pluginwindow.hh pluginwindow.ui
+	mainwindow.cc mainwindow.hh mainwindow.ui
+	applicationtools.hh applicationtools.cc
 )
 
 target_link_libraries(app
