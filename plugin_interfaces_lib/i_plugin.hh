@@ -14,6 +14,7 @@ public:
 
 	virtual QString getName() const = 0;
 	virtual QString getCategory() const = 0;
+	virtual QString getDescription() const = 0;
 
 private:
 };

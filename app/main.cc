@@ -1,3 +1,5 @@
+#include "pluginwindow.hh"
+
 #include <plugin_manager_lib/plugin_manager.hh>
 
 #include <QApplication>
@@ -12,6 +14,9 @@ int main(int argc, char** argv)
 	QApplication app(argc, argv);
 
 	Weather::PluginManager manager(app.applicationDirPath());
+
+	Weather::PluginWindow pw(manager);
+	pw.show();
 
 	return app.exec();
 }

@@ -2,13 +2,15 @@
 
 #include <QDialog>
 
+#include <memory>
+
 namespace Ui {
 class PluginWindow;
 }
 
 class QTreeWidget;
 
-namespace Weahter {
+namespace Weather {
 
 class PluginManager;
 
@@ -22,7 +24,7 @@ public:
 
 private:
 
-	void populate(QTreeWidget& widget, const PluginManager& pluginmanager);
+	void populate(QTreeWidget& widget, const PluginManager& pluginManager);
 
 	std::unique_ptr<Ui::PluginWindow> mUi;
 };

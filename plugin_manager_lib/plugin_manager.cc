@@ -1,5 +1,7 @@
 #include "plugin_manager.hh"
 
+#include <plugin_interfaces_lib/i_plugin.hh>
+
 #include <QDebug>
 
 namespace Weather
@@ -23,12 +25,12 @@ PluginManager::PluginManager(QDir directory)
 		if (plugin)
 		{
 			qDebug() << "Loaded! name=" << plugin->getName() << ", category=" << plugin->getCategory();
+			mPlugins.push_back(plugin);
 		}
 		else
 		{
 			qDebug() << "error loading plugin " << loader.errorString();
 		}
-
 	}
 }
 

@@ -4,7 +4,7 @@ add_library(dummy_plugin SHARED
 )
 
 target_link_libraries(dummy_plugin
-	plugin_manager
+	plugin_interfaces
 
 	Qt5::Core
 )

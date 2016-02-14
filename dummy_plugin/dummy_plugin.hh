@@ -1,6 +1,6 @@
 #pragma once
 
-#include <plugin_manager_lib/i_plugin.hh>
+#include <plugin_interfaces_lib/i_plugin.hh>
 
 namespace Weather {
 
@@ -14,6 +14,7 @@ public:
 
 	QString getName() const override { return "Dummy"; }
 	QString getCategory() const override { return "Dummy"; }
+	QString getDescription() const override { return "Dummy plugin"; }
 
 private:
 };
