@@ -25,7 +25,7 @@ class ICityQuery : public QObject
 	Q_OBJECT
 signals:
 
-	void resutlsReceived(QList<City> cities);
+	void resultsReceived(QList<City>* cities);
 
 public slots:
 

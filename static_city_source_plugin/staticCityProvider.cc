@@ -1,5 +1,7 @@
 #include "staticCityProvider.hh"
 
+#include "query.hh"
+
 namespace Weather { namespace StaticCityProvider {
 
 CityProvider::CityProvider(QObject* parent)
@@ -9,7 +11,10 @@ CityProvider::CityProvider(QObject* parent)
 
 ICityQuery* CityProvider::createQuery(QThread* queryThread)
 {
-	throw std::logic_error("Not implemented");
+	Query* query = new Query;
+	query->moveToThread(queryThread);
+
+	return query;
 }
 
 }}

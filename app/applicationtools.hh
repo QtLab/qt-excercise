@@ -11,15 +11,17 @@ class ApplicationTools
 {
 public:
 	ApplicationTools(QDir pluginDir);
+	~ApplicationTools();
 
 	const PluginManager& getPluginManager() const { return mPluginManager; }
 	const ExtensionManager& getExtensionManager() const { return mExtensionManager; }
+	QThread* getBackendThread() { return &mBackendThread; }
 
 private:
 
 	PluginManager mPluginManager;
 	ExtensionManager mExtensionManager;
-	QThread mBackedThread;
+	QThread mBackendThread;
 };
 
 } // namespace Weather

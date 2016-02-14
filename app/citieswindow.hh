@@ -8,6 +8,8 @@ class CitiesWindow;
 }
 
 class ApplicationTools;
+class ICityQuery;
+class City;
 
 class CitiesWindow : public QDialog
 {
@@ -17,13 +19,21 @@ public:
 	explicit CitiesWindow(ApplicationTools& tools, QWidget *parent = 0);
 	~CitiesWindow();
 
+private slots:
+	void on_mSearchButton_clicked();
+	void queryResults(QList<City>* cities);
+
 private:
 
 	void populateCityProviderSelector();
-
+	void cancelQuery();
+	void beginQuery();
+	void resetSearchForm();
+	void displayResults(const QList<City>& results);
 
 	ApplicationTools& mAppTools;
 	Ui::CitiesWindow *mUi;
+	ICityQuery* mQueryInProgress = nullptr;
 };
 
 
