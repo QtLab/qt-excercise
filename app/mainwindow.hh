@@ -2,6 +2,7 @@
 
 #include "pluginwindow.hh"
 #include "citieswindow.hh"
+#include "cities_table_model.hh"
 
 #include <QMainWindow>
 #include <QPointer>
@@ -34,6 +35,8 @@ private slots:
 private:
 	Ui::MainWindow* mUi;
 	Weather::ApplicationTools& mAppTools;
+	CitiesTableModel mModel;
+
 	QPointer<PluginWindow> mPluginWindow;
 	QPointer<CitiesWindow> mCitiesWindow;
 };

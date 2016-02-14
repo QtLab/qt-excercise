@@ -6,20 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>376</width>
-    <height>101</height>
+    <width>715</width>
+    <height>418</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Weather</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableView" name="mCitiesTableView"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>376</width>
+     <width>715</width>
      <height>27</height>
     </rect>
    </property>

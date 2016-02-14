@@ -79,7 +79,11 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QListWidget" name="mResultList"/>
+       <widget class="QListWidget" name="mResultList">
+        <property name="dragEnabled">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

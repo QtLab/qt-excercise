@@ -11,6 +11,10 @@ MainWindow::MainWindow(ApplicationTools& tools, QWidget *parent) :
 	mAppTools(tools)
 {
 	mUi->setupUi(this);
+	mUi->mCitiesTableView->setModel(&mModel);
+	mUi->mCitiesTableView->setDropIndicatorShown(true);
+	mUi->mCitiesTableView->setAcceptDrops(true);
+	mUi->mCitiesTableView->setDefaultDropAction(Qt::CopyAction);
 }
 
 MainWindow::~MainWindow()
