@@ -1,11 +1,13 @@
 #include "query.hh"
 
-#include <QTimer>
+#include "static_data.hh"
+
 #include <QDebug>
 
 namespace Weather { namespace StaticCityProvider {
 
-Query::Query()
+Query::Query(StaticData& staticData)
+	: mStaticData(staticData)
 {
 	qDebug() << "Static city query created";
 }
@@ -19,19 +21,20 @@ void Query::startQuery(QString query)
 {
 	qDebug() << "Static city query starts";
 
-	QTimer::singleShot(5000, this, &Query::sendResults);
-}
+	try
+	{
+		mStaticData.ensureLoaded();
 
-void Query::sendResults()
-{
-	QList<City>* result = new QList<City>;
+		QList<CityData>* result = new QList<CityData>;
+		*result = mStaticData.search(query);
 
-	result->push_back(City("aaaa", 1));
-	result->push_back(City("bbbb", 2));
-
-	qDebug() << "Sending results";
-	emit resultsReceived(result);
-	deleteLater();
+		qDebug() << "Query completed, results: " << result->size();
+		emit resultsReceived(result, {});
+	}
+	catch(const std::exception& e)
+	{
+		emit resultsReceived(nullptr, e.what());
+	}
 }
 
 }}

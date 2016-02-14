@@ -1,6 +1,9 @@
+#pragma once
 #include <plugin_interfaces_lib/i_city_provider.hh>
 
 namespace Weather { namespace StaticCityProvider {
+
+class StaticData;
 
 class Query : public ICityQuery
 {
@@ -8,16 +11,16 @@ class Query : public ICityQuery
 
 public:
 
-	Query();
+	Query(StaticData& staticData);
 	~Query();
 
 public slots:
 
 	void startQuery(QString query) override;
 
-private slots:
+private:
 
-	void sendResults();
+	StaticData& mStaticData;
 };
 
 }}

@@ -9,7 +9,7 @@ class CitiesWindow;
 
 class ApplicationTools;
 class ICityQuery;
-class City;
+class CityData;
 
 class CitiesWindow : public QDialog
 {
@@ -21,7 +21,7 @@ public:
 
 private slots:
 	void on_mSearchButton_clicked();
-	void queryResults(QList<City>* cities);
+	void queryResults(QList<CityData>* cities, QString error);
 
 private:
 
@@ -29,7 +29,7 @@ private:
 	void cancelQuery();
 	void beginQuery();
 	void resetSearchForm();
-	void displayResults(const QList<City>& results);
+	void displayResults(const QList<CityData>& results);
 
 	ApplicationTools& mAppTools;
 	Ui::CitiesWindow *mUi;

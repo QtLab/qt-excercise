@@ -5,19 +5,13 @@
 namespace Weather
 {
 
-class City
+class CityData
 {
 public:
 
-	City(const QString name, quint64 id) : mName(name), mId(id) {}
-
-	QString getName() const { return mName; }
-	quint64 getId() const { return mId; }
-
-private:
-
 	QString mName;
-	quint64 mId;
+	quint64 mId = 0;
+	QString mCountry;
 };
 
 class ICityQuery : public QObject
@@ -25,7 +19,7 @@ class ICityQuery : public QObject
 	Q_OBJECT
 signals:
 
-	void resultsReceived(QList<City>* cities);
+	void resultsReceived(QList<CityData>* cities, QString error);
 
 public slots:
 

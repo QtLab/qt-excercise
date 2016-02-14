@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/static_city_source_plugin">
+        <file>city.list.json</file>
+    </qresource>
+</RCC>

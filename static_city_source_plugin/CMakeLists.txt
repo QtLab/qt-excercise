@@ -2,6 +2,8 @@ add_library(static_city_provider_plugin SHARED
 	plugin.cc plugin.hh
 	staticCityProvider.cc staticCityProvider.hh
 	query.cc query.hh
+	static_data.cc static_data.hh
+	static_city_source_plugin.qrc
 )
 
 target_link_libraries(static_city_provider_plugin

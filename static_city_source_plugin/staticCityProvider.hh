@@ -1,5 +1,7 @@
 #include <plugin_interfaces_lib/i_city_provider.hh>
 
+#include "static_data.hh"
+
 namespace Weather { namespace StaticCityProvider {
 
 class CityProvider : public ICityProvider
@@ -12,6 +14,9 @@ public:
 	virtual QString getName() const { return "Static City Provider"; }
 
 	virtual ICityQuery* createQuery(QThread* queryThread);
+
+private:
+	StaticData mStaticData;
 };
 
 }}

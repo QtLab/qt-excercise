@@ -11,7 +11,7 @@ CityProvider::CityProvider(QObject* parent)
 
 ICityQuery* CityProvider::createQuery(QThread* queryThread)
 {
-	Query* query = new Query;
+	Query* query = new Query(mStaticData);
 	query->moveToThread(queryThread);
 
 	return query;

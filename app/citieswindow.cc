@@ -7,6 +7,7 @@
 
 #include <QComboBox>
 #include <QMessageBox>
+#include <QDebug>
 
 #include <memory>
 
@@ -50,6 +51,7 @@ void CitiesWindow::populateCityProviderSelector()
 
 void CitiesWindow::on_mSearchButton_clicked()
 {
+	qDebug() << "search cklicked";
 	if (mQueryInProgress)
 	{
 		cancelQuery();
@@ -61,14 +63,23 @@ void CitiesWindow::on_mSearchButton_clicked()
 	}
 }
 
-void CitiesWindow::queryResults(QList<City>* cities)
+void CitiesWindow::queryResults(QList<CityData>* cities, QString error)
 {
 	Q_ASSERT(mQueryInProgress);
+	qDebug() << "Query result recevied";
 
 	mQueryInProgress = nullptr;
-
-	std::unique_ptr<QList<City>> results(cities);
 	resetSearchForm();
+
+	if (!cities)
+	{
+		QMessageBox::critical(this,
+			"Query error",
+			"Query failed: " + error);
+		return;
+	}
+
+	std::unique_ptr<QList<CityData>> results(cities);
 
 	displayResults(*results);
 }
@@ -76,6 +87,7 @@ void CitiesWindow::queryResults(QList<City>* cities)
 void CitiesWindow::cancelQuery()
 {
 	Q_ASSERT(mQueryInProgress);
+	qDebug() << "Query cancelled";
 
 	disconnect(mQueryInProgress);
 	QMetaObject::invokeMethod(mQueryInProgress, "deleteLater");
@@ -99,9 +111,12 @@ void CitiesWindow::beginQuery()
 
 	mQueryInProgress = provider->createQuery(mAppTools.getBackendThread());
 
-	connect(mQueryInProgress, SIGNAL(resultsReceived(QList<City>*)), SLOT(queryResults(QList<City>*)));
+	connect(mQueryInProgress, SIGNAL(resultsReceived(QList<CityData>*, QString)), SLOT(queryResults(QList<CityData>*, QString)));
 
 	QMetaObject::invokeMethod(mQueryInProgress, "startQuery", Q_ARG(QString, queryText));
+
+
+	qDebug() << "Query started";
 
 	mUi->mQueryLineEdit->setEnabled(false);
 	mUi->mProviderSelector->setEnabled(false);
@@ -115,13 +130,13 @@ void CitiesWindow::resetSearchForm()
 	mUi->mSearchButton->setText("Search");
 }
 
-void CitiesWindow::displayResults(const QList<City>& results)
+void CitiesWindow::displayResults(const QList<CityData>& results)
 {
 	mUi->mResultList->clear();
 
-	for(const City& city : results)
+	for(const CityData& city : results)
 	{
-		new QListWidgetItem(city.getName(), mUi->mResultList);
+		new QListWidgetItem(city.mName + ", " + city.mCountry, mUi->mResultList);
 	}
 }
 
