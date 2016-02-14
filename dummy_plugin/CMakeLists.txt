@@ -11,4 +11,5 @@ target_link_libraries(dummy_plugin
 
 
 set_target_properties(dummy_plugin PROPERTIES
-	LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+	LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+)

@@ -3,6 +3,11 @@
 namespace Weather
 {
 
+ICityProvider::ICityProvider(QObject* parent)
+	: QObject(parent)
+{
+}
+
 ICityProvider::~ICityProvider()
 {
 }

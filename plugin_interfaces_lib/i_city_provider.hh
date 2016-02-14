@@ -20,13 +20,29 @@ private:
 	quint64 mId;
 };
 
+class ICityQuery : public QObject
+{
+	Q_OBJECT
+signals:
+
+	void resutlsReceived(QList<City> cities);
+
+public slots:
+
+	virtual void startQuery(QString query) = 0;
+};
+
 class ICityProvider : public QObject
 {
+	Q_OBJECT
 public:
+
+	ICityProvider(QObject* parent);
 
 	virtual ~ICityProvider();
 
-	virtual QList<City> findCities(const QString& query) const = 0;
+	virtual QString getName() const = 0;
+	virtual ICityQuery* createQuery(QThread* queryThread) = 0;
 };
 
 }

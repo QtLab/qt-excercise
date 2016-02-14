@@ -14,6 +14,7 @@ add_subdirectory(plugin_manager_lib)
 add_subdirectory(plugin_interfaces_lib)
 
 add_subdirectory(dummy_plugin)
+add_subdirectory(static_city_source_plugin)
 
 add_subdirectory(app)
 
