@@ -1,4 +1,7 @@
 #pragma once
+
+#include "cities_list_model.hh"
+
 #include <QDialog>
 
 namespace Weather {
@@ -34,6 +37,7 @@ private:
 	ApplicationTools& mAppTools;
 	Ui::CitiesWindow *mUi;
 	ICityQuery* mQueryInProgress = nullptr;
+	CitiesListModel mCitiesModel;
 };
 
 

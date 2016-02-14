@@ -19,6 +19,7 @@ CitiesWindow::CitiesWindow(ApplicationTools& tools, QWidget *parent) :
 	mUi(new Ui::CitiesWindow)
 {
 	mUi->setupUi(this);
+	mUi->mResultList->setModel(&mCitiesModel);
 	populateCityProviderSelector();
 }
 
@@ -132,12 +133,13 @@ void CitiesWindow::resetSearchForm()
 
 void CitiesWindow::displayResults(const QList<CityData>& results)
 {
-	mUi->mResultList->clear();
+	mCitiesModel.setData(results);
+//	mUi->mResultList->clear();
 
-	for(const CityData& city : results)
-	{
-		new QListWidgetItem(city.mName + ", " + city.mCountry, mUi->mResultList);
-	}
+//	for(const CityData& city : results)
+//	{
+//		new QListWidgetItem(city.mName + ", " + city.mCountry, mUi->mResultList);
+//	}
 }
 
 } // namespace Weather

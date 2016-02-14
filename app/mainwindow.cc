@@ -15,6 +15,7 @@ MainWindow::MainWindow(ApplicationTools& tools, QWidget *parent) :
 	mUi->mCitiesTableView->setDropIndicatorShown(true);
 	mUi->mCitiesTableView->setAcceptDrops(true);
 	mUi->mCitiesTableView->setDefaultDropAction(Qt::CopyAction);
+	mUi->mCitiesTableView->setDragDropMode(QAbstractItemView::DragDrop);
 }
 
 MainWindow::~MainWindow()

@@ -5,6 +5,7 @@ add_executable(app
 	applicationtools.hh applicationtools.cc
 	citieswindow.cc citieswindow.hh citieswindow.ui
 	cities_table_model.cc cities_table_model.hh
+	cities_list_model.cc cities_list_model.hh
 )
 
 target_link_libraries(app

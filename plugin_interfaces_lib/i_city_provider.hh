@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QDataStream>
 
 namespace Weather
 {
@@ -13,6 +14,11 @@ public:
 	quint64 mId = 0;
 	QString mCountry;
 };
+
+QDataStream& operator<<(QDataStream& s, const CityData& city);
+QDataStream& operator>>(QDataStream& s, CityData& city);
+static constexpr const char* city_data_mime = "application/x-weather-city-data";
+static constexpr const char* city_data_list_mime = "application/x-weather-city-data-list";
 
 class ICityQuery : public QObject
 {
